@@ -43,25 +43,41 @@ button?.addEventListener("click",(e)=>{
 })
 
 const bringAJoke=async():Promise<void>=>{
-    try {
-        const response=await fetch(`https://icanhazdadjoke.com/`,{ headers:{ Accept: 'application/json' }})
-        const data=await response.json()
-        console.log(data);
-        jokeData=data.joke
-        createAjoke(data)
-       
-        
-    } catch (error) {
-        handleError((error as Error).message)
+    const randomApi=Math.round(Math.random())
+    if(randomApi%2==0){
+        try {
+            const response=await fetch(`https://icanhazdadjoke.com/`,{ headers:{ Accept: 'application/json' }})
+            const data=await response.json()
+            console.log(data);
+            jokeData=data.joke
+            createAjoke(data.joke)
+           
+            
+        } catch (error) {
+            handleError((error as Error).message)
+        }
+    }else{
+        try {
+            const response=await fetch(`https://api.chucknorris.io/jokes/random`)
+            const data=await response.json()
+            console.log(data);
+            jokeData=data.value
+            createAjoke(data.value)
+           
+            
+        } catch (error) {
+            handleError((error as Error).message)
+        }
     }
+    
 }
 
 const createAjoke=(jokeData:any):void=>{
     if(jokes){
         jokes.innerHTML="";
 
-        const joke=document.createElement("h3")
-        joke.innerHTML=jokeData.joke
+        const joke=document.createElement("h4")
+        joke.innerHTML=jokeData
 
         const div=document.createElement("div")
         div.appendChild(joke)

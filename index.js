@@ -44,22 +44,37 @@ button === null || button === void 0 ? void 0 : button.addEventListener("click",
     bringAJoke();
 });
 const bringAJoke = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const response = yield fetch(`https://icanhazdadjoke.com/`, { headers: { Accept: 'application/json' } });
-        const data = yield response.json();
-        console.log(data);
-        jokeData = data.joke;
-        createAjoke(data);
+    const randomApi = Math.round(Math.random());
+    if (randomApi % 2 == 0) {
+        try {
+            const response = yield fetch(`https://icanhazdadjoke.com/`, { headers: { Accept: 'application/json' } });
+            const data = yield response.json();
+            console.log(data);
+            jokeData = data.joke;
+            createAjoke(data.joke);
+        }
+        catch (error) {
+            handleError(error.message);
+        }
     }
-    catch (error) {
-        handleError(error.message);
+    else {
+        try {
+            const response = yield fetch(`https://api.chucknorris.io/jokes/random`);
+            const data = yield response.json();
+            console.log(data);
+            jokeData = data.value;
+            createAjoke(data.value);
+        }
+        catch (error) {
+            handleError(error.message);
+        }
     }
 });
 const createAjoke = (jokeData) => {
     if (jokes) {
         jokes.innerHTML = "";
-        const joke = document.createElement("h3");
-        joke.innerHTML = jokeData.joke;
+        const joke = document.createElement("h4");
+        joke.innerHTML = jokeData;
         const div = document.createElement("div");
         div.appendChild(joke);
         jokes.appendChild(div);
