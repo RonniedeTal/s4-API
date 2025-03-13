@@ -11,6 +11,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const weather = document.getElementById("weather");
 const jokes = document.getElementById("jokes");
 const button = document.querySelector("button");
+const rankingData = [];
+const rankingButton = document.querySelector(".buttonB");
+let jokeData = "";
+console.log(rankingData);
 document.addEventListener("DOMContentLoaded", () => {
     bringWeather();
     bringAJoke();
@@ -22,6 +26,7 @@ const bringWeather = () => __awaiter(void 0, void 0, void 0, function* () {
         createWeather(data);
     }
     catch (error) {
+        handleError(error.message);
     }
 });
 const createWeather = (weatherData) => {
@@ -41,9 +46,10 @@ button === null || button === void 0 ? void 0 : button.addEventListener("click",
 const bringAJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch(`https://icanhazdadjoke.com/`, { headers: { Accept: 'application/json' } });
-        // const data=await response.json()
+        const data = yield response.json();
         console.log(data);
-        // createAjoke(data)
+        jokeData = data.joke;
+        createAjoke(data);
     }
     catch (error) {
         handleError(error.message);
@@ -59,6 +65,40 @@ const createAjoke = (jokeData) => {
         jokes.appendChild(div);
     }
 };
+rankingButton === null || rankingButton === void 0 ? void 0 : rankingButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("hola");
+    let rankingJoke = document.querySelector(`input[name=jokeRanking]:checked`).value;
+    const addJoke = rankingData.find(item => item.joke == jokeData);
+    if (rankingJoke == "good") {
+        console.log("vamos");
+        if (addJoke) {
+            addJoke.score = +3;
+            addJoke.date = new Date().toISOString();
+        }
+        else {
+            rankingData.push({ joke: jokeData, score: 3, date: new Date().toISOString() });
+        }
+    }
+    else if (rankingJoke == "regular") {
+        if (addJoke) {
+            addJoke.score = +2;
+            addJoke.date = new Date().toISOString();
+        }
+        else {
+            rankingData.push({ joke: jokeData, score: 2, date: new Date().toISOString() });
+        }
+    }
+    else if (rankingJoke == "bad") {
+        if (addJoke) {
+            addJoke.score = +1;
+            addJoke.date = new Date().toISOString();
+        }
+        else {
+            rankingData.push({ joke: jokeData, score: 1, date: new Date().toISOString() });
+        }
+    }
+});
 const handleError = (message) => {
     message = "ups something goes wrong, try it later";
     alert(`${message}`);
