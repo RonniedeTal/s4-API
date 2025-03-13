@@ -41,11 +41,12 @@ button === null || button === void 0 ? void 0 : button.addEventListener("click",
 const bringAJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch(`https://icanhazdadjoke.com/`, { headers: { Accept: 'application/json' } });
-        const data = yield response.json();
+        // const data=await response.json()
         console.log(data);
-        createAjoke(data);
+        // createAjoke(data)
     }
     catch (error) {
+        handleError(error.message);
     }
 });
 const createAjoke = (jokeData) => {
@@ -57,4 +58,8 @@ const createAjoke = (jokeData) => {
         div.appendChild(joke);
         jokes.appendChild(div);
     }
+};
+const handleError = (message) => {
+    message = "ups something goes wrong, try it later";
+    alert(`${message}`);
 };

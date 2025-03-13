@@ -15,7 +15,7 @@ const bringWeather=async():Promise<void>=>{
         const data=await response.json()
         createWeather(data)
     } catch (error) {
-        
+        handleError((error as Error).message)
     }
 }
 
@@ -45,7 +45,7 @@ const bringAJoke=async():Promise<void>=>{
        
         
     } catch (error) {
-        
+        handleError((error as Error).message)
     }
 }
 
@@ -62,4 +62,9 @@ const createAjoke=(jokeData:any):void=>{
         jokes.appendChild(div)
     }
 
+}
+
+const handleError=(message:string):void=>{
+    message="ups something goes wrong, try it later"
+    alert(`${message}`)
 }
