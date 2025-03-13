@@ -1,4 +1,6 @@
 const weather=document.getElementById("weather") as HTMLElement
+const jokes=document.getElementById("jokes") as HTMLElement
+const button= document.querySelector<HTMLButtonElement>("button")
 
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -26,4 +28,20 @@ if(weather){
     div.appendChild(weatherToday)
     weather.appendChild(div)
             }
+}
+
+button?.addEventListener("click",(e)=>{
+    e.preventDefault()
+    bringAJoke()
+})
+
+const bringAJoke=async():Promise<void>=>{
+    try {
+        const response=await fetch(`https://icanhazdadjoke.com/`,{ headers:{ Accept: 'application/json' }})
+        const data=await response.json()
+        console.log(data);
+        
+    } catch (error) {
+        
+    }
 }
