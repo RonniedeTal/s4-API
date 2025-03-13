@@ -5,6 +5,7 @@ const button= document.querySelector<HTMLButtonElement>("button")
 
 document.addEventListener("DOMContentLoaded",()=>{
 bringWeather()
+bringAJoke()
 
 },false)
 
@@ -40,8 +41,25 @@ const bringAJoke=async():Promise<void>=>{
         const response=await fetch(`https://icanhazdadjoke.com/`,{ headers:{ Accept: 'application/json' }})
         const data=await response.json()
         console.log(data);
+        createAjoke(data)
+       
         
     } catch (error) {
         
     }
+}
+
+const createAjoke=(jokeData:any):void=>{
+    if(jokes){
+        jokes.innerHTML="";
+
+        const joke=document.createElement("h3")
+        joke.innerHTML=jokeData.joke
+
+        const div=document.createElement("div")
+        div.appendChild(joke)
+
+        jokes.appendChild(div)
+    }
+
 }

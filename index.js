@@ -13,6 +13,7 @@ const jokes = document.getElementById("jokes");
 const button = document.querySelector("button");
 document.addEventListener("DOMContentLoaded", () => {
     bringWeather();
+    bringAJoke();
 }, false);
 const bringWeather = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -42,7 +43,18 @@ const bringAJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield fetch(`https://icanhazdadjoke.com/`, { headers: { Accept: 'application/json' } });
         const data = yield response.json();
         console.log(data);
+        createAjoke(data);
     }
     catch (error) {
     }
 });
+const createAjoke = (jokeData) => {
+    if (jokes) {
+        jokes.innerHTML = "";
+        const joke = document.createElement("h3");
+        joke.innerHTML = jokeData.joke;
+        const div = document.createElement("div");
+        div.appendChild(joke);
+        jokes.appendChild(div);
+    }
+};

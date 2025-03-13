@@ -5,3 +5,19 @@ body{
     padding: 40px;
     color: rgb(248, 178, 227);
 }
+
+.container{
+    padding-top: 50px;
+}
+.jokes{
+    width: fit-content;
+    padding: 50px;
+
+    height: fit-content;
+    border-radius: 20px;
+    background-color: pink;
+}
+h1{
+   text-align: center;
+   color: aliceblue;
+}
