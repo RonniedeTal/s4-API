@@ -1,0 +1,7 @@
+body{
+    background: black;
+}
+.weather{
+    padding: 40px;
+    color: rgb(248, 178, 227);
+}
