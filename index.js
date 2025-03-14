@@ -49,7 +49,6 @@ const bringAJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const response = yield fetch(`https://icanhazdadjoke.com/`, { headers: { Accept: 'application/json' } });
             const data = yield response.json();
-            console.log(data);
             jokeData = data.joke;
             createAjoke(data.joke);
         }
@@ -61,7 +60,6 @@ const bringAJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const response = yield fetch(`https://api.chucknorris.io/jokes/random`);
             const data = yield response.json();
-            console.log(data);
             jokeData = data.value;
             createAjoke(data.value);
         }

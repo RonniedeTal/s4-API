@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <div class="weather" id="weather"></div>
     <h1 class="text-center mt-4">Ready to Laught...</h1>
     <div class="container text-center w-25 mt-4">
-        
-        <div class="jokes mt-4 "id="jokes">
-
-        </div>
-        <button type="submit" class="mt-3 btn btn-primary">🤣Next🤣</button>
+      <div class="jokes mt-4" id="jokes"></div>
+      <button type="submit" class="mt-3 btn btn-primary">🤣Next🤣</button>
     </div>
     <section class="container text-center w-40 mt-4">
-        <h1>Ranking Joke</h1>
-        <input type="radio" name="jokeRanking" id="good" value="good" />
-        <label for="good">
-          <h5>Nice😂</h5>
-        </label>
-        
-        <input type="radio" name="jokeRanking" id="regular" value="regular" />
-        <label for="regular"><h5>Fine but...😊</h5></label>
-       
-        <input type="radio" name="jokeRanking" id="bad" value="bad" /><label
-          for="bad"
-          ><h5>Bad as hell😒</h5> </label><br>
-  
-        <button type="submit" class="buttonB mt-3 btn btn-danger">
-          Submit Rank
-        </button>
-      </section>
+      <h1>Ranking Joke</h1>
+      <input type="radio" name="jokeRanking" id="good" value="good" checked />
+      <label for="good">
+        <h5>Nice😂</h5>
+      </label>
 
-    <link rel="stylesheet" href="/css.css">
+      <input type="radio" name="jokeRanking" id="regular" value="regular" />
+      <label for="regular"><h5>Fine but...😊</h5></label>
+
+      <input type="radio" name="jokeRanking" id="bad" value="bad" /><label
+        for="bad"
+        ><h5>Bad as hell😒</h5> </label
+      ><br />
+
+      <button type="submit" class="buttonB mt-3 btn btn-danger">
+        Submit Rank
+      </button>
+    </section>
+
+    <link rel="stylesheet" href="/css.css" />
     <script src="./index.js"></script>
-
-</body>
+  </body>
 </html>
