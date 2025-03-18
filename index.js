@@ -14,7 +14,6 @@ const button = document.querySelector("button");
 const rankingData = [];
 const rankingButton = document.querySelector(".buttonB");
 let jokeData = "";
-console.log(rankingData);
 document.addEventListener("DOMContentLoaded", () => {
     bringWeather();
     bringAJoke();
@@ -80,11 +79,9 @@ const createAjoke = (jokeData) => {
 };
 rankingButton === null || rankingButton === void 0 ? void 0 : rankingButton.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("hola");
     let rankingJoke = document.querySelector(`input[name=jokeRanking]:checked`).value;
     const addJoke = rankingData.find(item => item.joke == jokeData);
     if (rankingJoke == "good") {
-        console.log("vamos");
         if (addJoke) {
             addJoke.score = +3;
             addJoke.date = new Date().toISOString();
@@ -116,3 +113,4 @@ const handleError = (message) => {
     message = "ups something goes wrong, try it later";
     alert(`${message}`);
 };
+console.log(rankingData);

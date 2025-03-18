@@ -4,7 +4,7 @@ const button = document.querySelector<HTMLButtonElement>("button")
 const rankingData: { joke: string, score: number, date: string }[] = []
 const rankingButton = document.querySelector<HTMLButtonElement>(".buttonB")
 let jokeData: string = ""
-console.log(rankingData);
+
 
 document.addEventListener("DOMContentLoaded", () => {
     bringWeather()
@@ -118,3 +118,4 @@ const handleError = (message: string): void => {
     message = "ups something goes wrong, try it later"
     alert(`${message}`)
 }
+console.log(rankingData);
